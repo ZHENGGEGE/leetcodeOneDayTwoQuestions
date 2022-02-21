@@ -24,11 +24,32 @@
 输出：[0,1]
  
 
-提示：
 
-2 <= nums.length <= 104
--109 <= nums[i] <= 109
--109 <= target <= 109
-只会存在一个有效答案
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+ var twoSum = function(nums, target) {
+    for(var i=0;i<nums.length;i++){
+        for(var j= i+1;j<nums.length;j++){
+            if(nums[i]+nums[j] === target){
+                return [i,j]
+            }
+        }
+    }
+};
 
-*/
+var twoSum2 = function(nums, target) {
+    const maps = new Map()
+    for(var i=0;i<nums.length;i++){
+        const addNum = target-nums[i]
+        if(maps.has(addNum)){
+            return [maps.get(addNum),i]
+        }
+        maps.set(nums[i],i)
+    }
+};
+
+
+console.log(twoSum2([2,7,11,15],9))
